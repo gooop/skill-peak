@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>SkillPeak</AssemblyName>
+    <RootNamespace>SkillPeak</RootNamespace>
+    <Version>1.0.0</Version>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+    <!--
+      Point this at your Valheim install (the folder that contains valheim_Data and BepInEx).
+      Easiest: set an env var before building, e.g.
+        export VALHEIM_INSTALL_DIR="$HOME/Library/Application Support/Steam/steamapps/common/Valheim"
+      Falls back to the default macOS Steam location if unset.
+    -->
+    <ValheimDir Condition="'$(VALHEIM_INSTALL_DIR)' != ''">$(VALHEIM_INSTALL_DIR)</ValheimDir>
+    <ValheimDir Condition="'$(ValheimDir)' == ''">$(HOME)/Library/Application Support/Steam/steamapps/common/Valheim</ValheimDir>
+
+    <!-- Windows/Linux layout -->
+    <ManagedDir Condition="Exists('$(ValheimDir)/valheim_Data/Managed')">$(ValheimDir)/valheim_Data/Managed</ManagedDir>
+    <!-- macOS layout: Valheim ships as an .app bundle -->
+    <ManagedDir Condition="'$(ManagedDir)' == '' AND Exists('$(ValheimDir)/valheim.app/Contents/Resources/Data/Managed')">$(ValheimDir)/valheim.app/Contents/Resources/Data/Managed</ManagedDir>
+
+    <BepInExCoreDir>$(ValheimDir)/BepInEx/core</BepInExCoreDir>
+    <BepInExPluginsDir>$(ValheimDir)/BepInEx/plugins</BepInExPluginsDir>
+  </PropertyGroup>
+
+  <!--
+    Valheim's actual game code (Player, Skills, SkillsDialog, Game, ...) lives in
+    assembly_valheim.dll, not the near-empty Assembly-CSharp.dll — Valheim splits its
+    code into several custom assemblies. Rather than hand-list assembly_valheim's own
+    dependency closet (TextMeshPro, half a dozen UnityEngine.*Module DLLs, etc.), just
+    reference everything in Managed/ plus the BepInEx/Harmony core DLLs.
+  -->
+  <ItemGroup>
+    <Reference Include="$(ManagedDir)/*.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="$(BepInExCoreDir)/BepInEx.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="$(BepInExCoreDir)/0Harmony.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Drops the built DLL straight into your plugins folder so a restart picks it up. -->
+  <Target Name="CopyToPlugins" AfterTargets="Build" Condition="Exists('$(BepInExPluginsDir)')">
+    <MakeDir Directories="$(BepInExPluginsDir)/SkillPeak" />
+    <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="$(BepInExPluginsDir)/SkillPeak/" />
+  </Target>
+
+</Project>

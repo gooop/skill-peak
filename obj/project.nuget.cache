@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "F7AJTA5v2V4=",
+  "success": true,
+  "projectFilePath": "/Users/gooop/workspace/valheim-mod/SkillPeak/SkillPeak.csproj",
+  "expectedPackageFiles": [
+    "/Users/gooop/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "/Users/gooop/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.3/microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
