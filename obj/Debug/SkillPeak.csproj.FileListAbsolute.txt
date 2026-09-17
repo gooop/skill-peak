@@ -1,9 +1,0 @@
-/Users/gooop/workspace/valheim-mod/SkillPeak/obj/Debug/SkillPeak.csproj.AssemblyReference.cache
-/Users/gooop/workspace/valheim-mod/SkillPeak/obj/Debug/SkillPeak.GeneratedMSBuildEditorConfig.editorconfig
-/Users/gooop/workspace/valheim-mod/SkillPeak/obj/Debug/SkillPeak.AssemblyInfoInputs.cache
-/Users/gooop/workspace/valheim-mod/SkillPeak/obj/Debug/SkillPeak.AssemblyInfo.cs
-/Users/gooop/workspace/valheim-mod/SkillPeak/obj/Debug/SkillPeak.csproj.CoreCompileInputs.cache
-/Users/gooop/workspace/valheim-mod/SkillPeak/bin/Debug/SkillPeak.dll
-/Users/gooop/workspace/valheim-mod/SkillPeak/bin/Debug/SkillPeak.pdb
-/Users/gooop/workspace/valheim-mod/SkillPeak/obj/Debug/SkillPeak.dll
-/Users/gooop/workspace/valheim-mod/SkillPeak/obj/Debug/SkillPeak.pdb
