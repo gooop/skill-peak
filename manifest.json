@@ -1,7 +1,7 @@
 {
   "name": "SkillPeak",
   "version_number": "1.0.0",
-  "website_url": "www.gooop.net",
+  "website_url": "https://www.gooop.net",
   "description": "Shows a small tick mark on each skill's bar in the skills menu for the highest level that skill has ever reached.",
   "dependencies": ["denikson-BepInExPack_Valheim-5.4.2202"]
 }
