@@ -231,7 +231,7 @@ namespace SkillPeak
     [HarmonyPatch(typeof(Game), nameof(Game.Logout))]
     public static class PatchGameLogout
     {
-        private static void Prefix()
+        private static void Postfix()
         {
             PatchPlayerOnSpawned.Loaded = false;
             SkillPeakPlugin.MaxLevels.Clear();
